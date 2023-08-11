@@ -37,7 +37,16 @@ class ClienteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $created = $this->cliente->create([
+            'nome' => $request->input('nome'),
+            'endereco' => $request->input('endereco'),
+            'bairro' => $request->input('bairro'),
+            'cep' => $request->input('cep'),
+            'estado' => $request->input('estado'),
+            'cidade' => $request->input('cidade')
+        ]);
+
+        return redirect()->route('Cliente.index');
     }
 
     /**
@@ -51,10 +60,9 @@ class ClienteController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Cliente $cliente)
+    public function edit(Cliente $Cliente)
     {
-        var_dump($cliente);
-
+        return view('editarCliente', ['cliente' => $Cliente]);
     }
 
     /**
@@ -62,7 +70,9 @@ class ClienteController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $updated = $this->cliente->where('id', $id)->update($request->except(['_token','_method']));
+
+        return redirect()->route('Cliente.index');
     }
 
     /**
@@ -70,6 +80,7 @@ class ClienteController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $this->cliente->where('id', $id)->delete();
+        return view('listarCliente');
     }
 }

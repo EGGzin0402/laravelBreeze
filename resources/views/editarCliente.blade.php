@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Cadastro de Cliente') }}
+            {{ __('Editar Cadastro de Cliente') }}
         </h2>
     </x-slot>
 
@@ -10,28 +10,29 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6">
 
-                <form action="{{ route('Cliente.store')}}" method= "post">
+                <form action="{{ route('Cliente.update', ['Cliente' => $cliente->id]) }}" method="post">
 
                 @csrf
+                @method('put')
 
                     <div class="mb-3">
                         <label for="nomeInput" class="form-label">Nome</label>
-                        <input type="text" class="form-control" id="nomeInput" name= "nome">
+                        <input type="text" class="form-control" id="nomeInput" name= "nome" value="{{ $cliente->nome }}">
                     </div>
 
                     <div class="mb-3">
                         <label for="enderecoInput" class="form-label">Endereço</label>
-                        <input type="text" class="form-control" id="enderecoInput" name= "endereco">
+                        <input type="text" class="form-control" id="enderecoInput" name= "endereco" value="{{ $cliente->endereco }}">
                     </div>
 
                     <div class="mb-3">
                         <label for="bairroInput" class="form-label">Bairro</label>
-                        <input type="text" class="form-control" id="bairroInput" name= "bairro">
+                        <input type="text" class="form-control" id="bairroInput" name= "bairro" value="{{ $cliente->bairro }}">
                     </div>
 
                     <div class="mb-3">
                         <label for="CEPInput" class="form-label">CEP</label>
-                        <input type="text" class="form-control" id="CEPInput" maxlength=9 name= "cep">
+                        <input type="text" class="form-control" id="CEPInput" maxlength=9 name= "cep" value="{{ $cliente->cep }}">
                     </div>
 
                     <div class="mb-3">
@@ -69,7 +70,7 @@
 
                     <div class="mb-3">
                         <label for="cidadeInput" class="form-label">Cidade</label>
-                        <input type="text" class="form-control" id="cidadeInput" name= "cidade">
+                        <input type="text" class="form-control" id="cidadeInput" name= "cidade" value="{{ $cliente->cidade }}">
                     </div>
 
                     <button type="submit" class="btn btn-primary">Submit</button>

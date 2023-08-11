@@ -37,7 +37,8 @@
                                 <td>{{$cliente->cep}}</td>
                                 <td>{{$cliente->estado}}</td>
                                 <td>{{$cliente->cidade}}</td>
-                                <td><button class="button"></button></td>
+                                <td><a class="btn btn-primary" href="{{route('Cliente.edit', ['Cliente' => $cliente]) }}" role="button">Editar</a></td>
+                                <td><a class="btn btn-close" href="{{route('Cliente.destroy', ['Cliente' => $cliente]) }}" role="button"></a></td>
                             </tr>
                         @endforeach
                         </tbody>
