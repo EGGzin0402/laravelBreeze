@@ -13,7 +13,7 @@
                         <br>
 
                         @if (!empty($clientes[0]))
-
+                        <div class="table-responsive">
                             <table class="table">
                             <thead>
                                 <tr>
@@ -45,6 +45,7 @@
                             @endforeach
                             </tbody>
                             </table>
+                        </div>
                         @else
                         <tr>
                             <td class="px-4 py-2 border text-center text-red-500" colspan="7">Nenhum cliente cadastrado.</td>
